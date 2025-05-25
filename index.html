@@ -1,7 +1,8 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lucas 14kvard</title>
   <style>
     body {
@@ -10,92 +11,119 @@
       background: linear-gradient(to bottom, #3b0066, #ff66cc);
       color: white;
       overflow-x: hidden;
-    }header {
-  background-color: #222;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-.logo img {
-  height: 40px;
-  margin-right: 10px;
-}
-
-nav a {
-  color: #00ffcc;
-  margin: 0 10px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-nav a:hover {
-  color: #ffffff;
-}
-
-.banner {
-  background: url('https://i.imgur.com/Vj4TClJ.png') no-repeat center;
-  background-size: cover;
-  height: 200px;
-  position: relative;
-}
-
-.profile {
-  padding: 1rem;
-  text-align: center;
-}
-
-.profile img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 4px solid #00ccff;
-  margin-top: -60px;
-}
-
-.status {
-  font-style: italic;
-  color: #ccccff;
-  margin: 10px 0;
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
-}
-
-.gallery img {
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #00ffff;
-  transition: transform 0.2s;
-}
-
-.gallery img:hover {
-  transform: scale(1.05);
-}
-
-footer {
-  background-color: #111;
-  text-align: center;
-  padding: 1rem;
-  color: #888;
-  font-size: 0.9rem;
-}
-
-.green-tab {
-  color: #00ff66;
-  text-shadow: 0 0 5px #00ff66;
-}
-
+    }
+    header {
+      background-color: #222;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    nav a {
+      color: #00ffcc;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    nav a.green-tab {
+      color: #00ff66;
+      text-shadow: 0 0 5px #00ff66;
+    }
+    nav a:hover {
+      color: #ffffff;
+    }
+    .banner {
+      background: url('https://i.imgur.com/Vj4TClJ.png') no-repeat center;
+      background-size: cover;
+      height: 200px;
+      position: relative;
+    }
+    section {
+      display: none;
+      padding: 1rem;
+      text-align: center;
+    }
+    section.active {
+      display: block;
+    }
+    .profile img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid #00ccff;
+      margin-top: -60px;
+    }
+    .status {
+      font-style: italic;
+      color: #ccccff;
+      margin: 10px 0;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00ffff;
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 1rem;
+      color: #888;
+      font-size: 0.9rem;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+    /* Дополнительные стили для формы "Добавить" */
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: bold;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+    }
+    button {
+      margin-top: 12px;
+      padding: 10px 20px;
+      background-color: #00ccff;
+      border: none;
+      border-radius: 6px;
+      color: #222;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0099cc;
+    }
   </style>
 </head>
 <body>
@@ -105,20 +133,96 @@ footer {
       <h1>Lucas 14kvard</h1>
     </div>
     <nav>
-      <a href="#profile">Профиль</a>
-      <a class="green-tab" href="#feed">Общее</a>
-      <a href="#upload">Добавить</a>
+      <a href="#" class="tab-link active" data-tab="profile">Профиль</a>
+      <a href="#" class="tab-link green-tab" data-tab="feed">Общее</a>
+      <a href="#" class="tab-link" data-tab="upload">Добавить</a>
     </nav>
-  </header>  <div class="banner"></div>  <section class="profile" id="profile">
+  </header>
+
+  <div class="banner"></div>
+
+  <section id="profile" class="profile active">
     <img src="https://i.imgur.com/SR5EzWj.png" alt="Avatar" />
     <div class="status">Мечтаю построить аквапарк для всех булочек</div>
-  </section>  <section class="gallery" id="feed">
+  </section>
+
+  <section id="feed" class="gallery">
     <img src="https://i.imgur.com/sOqzRZq.jpg" alt="Post 1" />
     <img src="https://i.imgur.com/BvT0TNG.jpg" alt="Post 2" />
     <img src="https://i.imgur.com/KXqJYwV.jpg" alt="Post 3" />
     <img src="https://i.imgur.com/Fp8JkQu.jpg" alt="Post 4" />
-  </section>  <footer>
+  </section>
+
+  <section id="upload">
+    <form id="postForm">
+      <label for="postTitle">Заголовок поста:</label>
+      <input type="text" id="postTitle" name="postTitle" required />
+
+      <label for="postImage">URL изображения:</label>
+      <input type="text" id="postImage" name="postImage" placeholder="https://..." required />
+
+      <button type="submit">Добавить пост</button>
+    </form>
+  </section>
+
+  <footer>
     Lucas 14kvard © 2025 — inspired by retrowave & Sony Sketch
   </footer>
+
+  <script>
+    // Переключение табов
+    const tabs = document.querySelectorAll('.tab-link');
+    const sections = document.querySelectorAll('section');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', e => {
+        e.preventDefault();
+
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const target = tab.getAttribute('data-tab');
+        sections.forEach(section => {
+          if (section.id === target) {
+            section.classList.add('active');
+          } else {
+            section.classList.remove('active');
+          }
+        });
+      });
+    });
+
+    // Добавление поста через форму
+    const postForm = document.getElementById('postForm');
+    const feedSection = document.getElementById('feed');
+
+    postForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const title = postForm.postTitle.value.trim();
+      const imageUrl = postForm.postImage.value.trim();
+
+      if (title && imageUrl) {
+        const img = document.createElement('img');
+        img.src = imageUrl;
+        img.alt = title;
+        img.title = title;
+        feedSection.appendChild(img);
+
+        // Очистить форму
+        postForm.reset();
+
+        // Переключиться на вкладку "Общее"
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelector('[data-tab="feed"]').classList.add('active');
+        sections.forEach(section => {
+          if (section.id === 'feed') {
+            section.classList.add('active');
+          } else {
+            section.classList.remove('active');
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
